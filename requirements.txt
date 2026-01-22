@@ -5,6 +5,9 @@
 fastapi==0.117.1
 uvicorn[standard]==0.36.0
 
+# data versioning
+dvc==3.66.1
+
 # linting
 flake8==7.1.1
 

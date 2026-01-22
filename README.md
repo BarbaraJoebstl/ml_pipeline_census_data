@@ -16,12 +16,12 @@ Working in a command line environment is recommended for ease of use with git an
     * Activate environment: `source .venv/bin/activate` (On Windows: `.venv\Scripts\activate`)
     * Install dependencies: `pip install -r starter/requirements.txt`
 
-* **Option 2: Using conda**
+* **Option 2: Using conda** ✅
     * Download and install conda if you don't have it already.
     * conda create -n [envname] "python=3.13" scikit-learn pandas numpy pytest jupyter jupyterlab fastapi uvicorn pydantic httpx matplotlib seaborn -c conda-forge
     * Install git either through conda ("conda install git") or through your CLI, e.g. sudo apt-get git.
 
-## Repositories
+## Repositories ✅
 * Create a directory for the project and initialize git.
     * As you work on the code, continually commit changes. Trained models you want to use in production must be committed to GitHub.
 * Connect your local git repo to GitHub.
