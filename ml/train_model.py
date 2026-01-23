@@ -5,9 +5,9 @@ import pandas as pd
 import joblib
 
 # Add the necessary imports for the starter code.
-from data import process_data
-from model import train_model, inference, compute_model_metrics, evaluate_slices, plot_slice_metrics_combined
-from logger import get_logger
+from .data import process_data
+from .model import train_model, inference, compute_model_metrics, evaluate_slices, plot_slice_metrics_combined
+from .logger import get_logger
 
 logger = get_logger(__name__)
 
