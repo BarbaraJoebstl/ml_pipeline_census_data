@@ -29,7 +29,7 @@ Working in a command line environment is recommended for ease of use with git an
     * Make sure you set up the GitHub Action to use Python 3.13 (same version as development).
     * Note: Add flake8 to requirements.txt if you want to use it for linting: `pip install flake8`
 
-# Data
+# Data ✅
 * Download census.csv and commit it to dvc.
 * This data is messy, try to open it in pandas and see what you get.
 * To clean it, use your favorite text editor to remove all spaces.
