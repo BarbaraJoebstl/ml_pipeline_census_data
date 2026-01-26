@@ -2,10 +2,10 @@ from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.base import ClassifierMixin
 from sklearn.preprocessing import OneHotEncoder, LabelBinarizer
-from logger import get_logger
+from utils.logger import get_logger
 from typing import List
 import pandas as pd
-from data import process_data
+from ml.data import process_data
 import matplotlib.pyplot as plt
 import seaborn as sns
 

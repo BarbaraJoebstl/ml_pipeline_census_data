@@ -6,8 +6,9 @@ import joblib
 
 # Add the necessary imports for the starter code.
 from data import process_data
-from model import train_model, inference, compute_model_metrics, evaluate_slices, plot_slice_metrics_combined
-from logger import get_logger
+from ml.model import train_model, inference, compute_model_metrics, evaluate_slices
+from ml.consts import CATEGORICAL_FEATURES, LABEL_COLUMN, PATH_ENCODER, PATH_MODEL, PATH_LB
+from utils.logger import get_logger
 
 logger = get_logger(__name__)
 
@@ -18,23 +19,15 @@ data = pd.read_csv("../data/census.csv")
 # Optional enhancement, use K-fold cross validation instead of a train-test split.
 train, test = train_test_split(data, test_size=0.20)
 
-cat_features = [
-    "workclass",
-    "education",
-    "marital-status",
-    "occupation",
-    "relationship",
-    "race",
-    "sex",
-    "native-country",
-]
-X_train, y_train, encoder, lb = process_data(train, categorical_features=cat_features, label="salary", training=True)
+X_train, y_train, encoder, lb = process_data(
+    train, categorical_features=CATEGORICAL_FEATURES, label=LABEL_COLUMN, training=True
+)
 
 # Proces the test data with the process_data function.
 X_test, y_test, _, _ = process_data(
     test,
-    categorical_features=cat_features,
-    label="salary",
+    categorical_features=CATEGORICAL_FEATURES,
+    label=LABEL_COLUMN,
     training=False,
     encoder=encoder,
     lb=lb,
@@ -50,9 +43,9 @@ preds = inference(model, X_test)
 precision, recall, fbeta = compute_model_metrics(y_test, preds)
 logger.info(f"Precision: {precision:.3f}, Recall: {recall:.3f}, F1: {fbeta:.3f}")
 
-joblib.dump(model, "../model/random_forest_model.joblib")
-joblib.dump(encoder, "../model/encoder.joblib")
-joblib.dump(lb, "../model/lb.joblib")
+joblib.dump(model, PATH_MODEL)
+joblib.dump(encoder, PATH_ENCODER)
+joblib.dump(lb, PATH_LB)
 
 logger.info("Model and encoders saved to model/")
 
@@ -60,8 +53,8 @@ logger.info("Model and encoders saved to model/")
 eval_slices, eval_columns = evaluate_slices(
     model,
     test,
-    cat_features,
-    "salary",
+    CATEGORICAL_FEATURES,
+    LABEL_COLUMN,
     encoder,
     lb,
 )
