@@ -1,13 +1,11 @@
-from fastapi import FastAPI, UploadFile, File, HTTPException
-from pydantic import parse_obj_as
+from fastapi import FastAPI
 
-from io import StringIO
 import pandas as pd
 from ml.data import process_data
 from ml.model import inference
-from ml.consts import CATEGORICAL_FEATURES, PATH_MODEL, PATH_ENCODER, PATH_LB, LABEL_COLUMN, CensusInput
+from ml.consts import CATEGORICAL_FEATURES, PATH_MODEL, PATH_ENCODER, PATH_LB, CensusInput
 import joblib
-from utils import utils
+
 
 app = FastAPI(title="Census Income Predictor API")
 
@@ -31,7 +29,7 @@ async def predict(input_data: CensusInput):
     """
 
     # Convert validated Pydantic model to DataFrame
-    df = pd.DataFrame([input_data.model_dump(by_alias=False)])
+    df = pd.DataFrame([input_data.model_dump(by_alias=True)])
 
     # Load pretrained artifacts
     model = joblib.load(PATH_MODEL)
@@ -42,7 +40,7 @@ async def predict(input_data: CensusInput):
     X, _, _, _ = process_data(
         df,
         categorical_features=CATEGORICAL_FEATURES,
-        label=LABEL_COLUMN,
+        label=None,
         training=False,
         encoder=encoder,
         lb=lb,
@@ -51,4 +49,6 @@ async def predict(input_data: CensusInput):
     # Run inference
     prediction = inference(model, X)
 
-    return {"prediction": prediction[0]}
+    pred_label = lb.inverse_transform(prediction)  # converts 0/1 back to original class
+
+    return f"It is predicted that the person earns {pred_label}."
