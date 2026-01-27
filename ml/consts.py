@@ -1,8 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import Literal
-
 from pathlib import Path
-
 
 CATEGORICAL_FEATURES = [
     "workclass",
@@ -21,6 +18,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 PATH_MODEL = BASE_DIR / "model" / "random_forest_model.joblib"
 PATH_ENCODER = BASE_DIR / "model" / "encoder.joblib"
 PATH_LB = BASE_DIR / "model" / "lb.joblib"
+
+VALID_PAYLOAD = {
+    "age": 39,
+    "workclass": "State-gov",
+    "fnlgt": 77516,
+    "education": "Bachelors",
+    "education-num": 13,
+    "marital-status": "Never-married",
+    "occupation": "Adm-clerical",
+    "relationship": "Not-in-family",
+    "race": "White",
+    "sex": "Male",
+    "capital-gain": 2174,
+    "capital-loss": 0,
+    "hours-per-week": 40,
+    "native-country": "United-States",
+}
 
 
 # use aliases for the hyphen python issue

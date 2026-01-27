@@ -61,3 +61,6 @@ Working in a command line environment is recommended for ease of use with git an
 
 
 --> run locally: `uvicorn app.main:app`
+URL = "https://census-predictor-app-66abc96b2c5f.herokuapp.com/predict"
+--> builds on heroku is triggered on ever push to main if CI ran through
+LOCAL_URL = "http://127.0.0.1:8000/predict"

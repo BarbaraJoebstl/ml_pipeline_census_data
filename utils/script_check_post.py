@@ -1,14 +1,12 @@
 import requests
 
-
 # Helper script to test the Heroku endpoint for post, sending a mock payload.
 
 URL = "https://census-predictor-app-66abc96b2c5f.herokuapp.com/predict"
 # URL = "http://127.0.0.1:8000/predict"
 
 
-# sends a payload of on row with censusInput data conform structure.
-payload = {
+SAMPLE_PAYLOAD = {
     "age": 39,
     "workclass": "State-gov",
     "fnlgt": 77516,
@@ -24,10 +22,9 @@ payload = {
     "hours-per-week": 40,
     "native-country": "United-States",
 }
-
-
-print(f"sending request with payload {payload}")
-response = requests.post(URL, json=payload)
+# sends a payload of on row with censusInput data conform structure.
+print(f"sending request with payload {SAMPLE_PAYLOAD}")
+response = requests.post(URL, json=SAMPLE_PAYLOAD)
 
 print("Status code:", response.status_code)
 print(response.status_code)
