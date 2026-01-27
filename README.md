@@ -41,7 +41,7 @@ Working in a command line environment is recommended for ease of use with git an
     * Suggestion: for simplicity, the function can just output the performance on slices of just the categorical features.
 * Write a model card using the provided template.
 
-# API Creation
+# API Creation ✅
 *  Create a RESTful API using FastAPI this must implement:
     * GET on the root giving a welcome message.
     * POST that does model inference.
@@ -50,7 +50,7 @@ Working in a command line environment is recommended for ease of use with git an
    	 * Hint: the data has names with hyphens and Python does not allow those as variable names. Do not modify the column names in the csv and instead use the functionality of FastAPI/Pydantic/etc to deal with this.
 * Write 3 unit tests to test the API (one for the GET and two for POST, one that tests each prediction).
 
-# API Deployment
+# API Deployment ✅
 * Create a free Heroku account (for the next steps you can either use the web GUI or download the Heroku CLI).
 * Create a new app and have it deployed from your GitHub repository.
     * Enable automatic deployments that only deploy if your continuous integration passes.
