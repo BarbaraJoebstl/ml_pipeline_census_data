@@ -144,6 +144,8 @@ def evaluate_slices(
     # Convert to DataFrame
     slice_df = pd.DataFrame(slice_results)
 
+    # store to .txt
+    slice_df.to_csv("slice_output.txt", sep="\t", index=False)
     # Compute weighted averages per feature
     agg_df = (
         slice_df.groupby("feature")

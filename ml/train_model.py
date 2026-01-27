@@ -5,7 +5,7 @@ import pandas as pd
 import joblib
 
 # Add the necessary imports for the starter code.
-from data import process_data
+from ml.data import process_data
 from ml.model import train_model, inference, compute_model_metrics, evaluate_slices
 from ml.consts import CATEGORICAL_FEATURES, LABEL_COLUMN, PATH_ENCODER, PATH_MODEL, PATH_LB
 from utils.logger import get_logger
@@ -14,7 +14,7 @@ logger = get_logger(__name__)
 
 logger.info("loading raw data")
 # Add code to load in the data.
-data = pd.read_csv("../data/census.csv")
+data = pd.read_csv("data/census.csv")
 
 # Optional enhancement, use K-fold cross validation instead of a train-test split.
 train, test = train_test_split(data, test_size=0.20)
