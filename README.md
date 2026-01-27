@@ -57,7 +57,9 @@ Working in a command line environment is recommended for ease of use with git an
     * Hint: think about how paths will differ in your local environment vs. on Heroku.
     * Hint: development in Python is fast! But how fast you can iterate slows down if you rely on your CI/CD to fail before fixing an issue. I like to run flake8 locally before I commit changes.
     * Note: Install flake8 separately if needed: `pip install flake8`
-* Write a script that uses the requests module to do one POST on your live API.
+* Write a script that uses the requests module to do one POST on your live API. -->
+The testscript can be found in utils. run `script_check_post.py`
+to send a post with a sample payload to Heroku.
 
 
 --> run locally: `uvicorn app.main:app`
