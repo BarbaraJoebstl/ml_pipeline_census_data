@@ -61,8 +61,16 @@ Working in a command line environment is recommended for ease of use with git an
 The testscript can be found in utils. run `script_check_post.py`
 to send a post with a sample payload to Heroku.
 
+# Running FastAPI
 
---> run locally: `uvicorn app.main:app`
-URL = "https://census-predictor-app-66abc96b2c5f.herokuapp.com/predict"
---> builds on heroku is triggered on ever push to main if CI ran through
-LOCAL_URL = "http://127.0.0.1:8000/predict"
+## Locally
+uvicorn app.main:app
+
+## on Heroku
+https://census-predictor-app-66abc96b2c5f.herokuapp.com/
+
+
+Additional resources:
+- https://ml-ops.org/
+- https://towardsdatascience.com/design-patterns-for-machine-learning-410be845c0db/
+- https://trojrobert.medium.com/reasons-why-ml-in-production-is-hard-and-solutions-to-help-part-1-54b3080ef4af/
